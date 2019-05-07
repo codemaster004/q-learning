@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>szczur</title>
+  <style>
+    td {
+      width: 100px;
+      height: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>
+        <p>start / action</p>
+      </td>
+      <td>
+        <p>A</p>
+      </td>
+      <td>
+        <p>B</p>
+      </td>
+      <td>
+        <p>C</p>
+      </td>
+      <td>
+        <p>D</p>
+      </td>
+      <td>
+        <p>E</p>
+      </td>
+      <td>
+        <p>F</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>A</p>
+      </td>
+      <td>
+        <p id="a_a">-</p>
+      </td>
+      <td>
+        <p id="a_b">-</p>
+      </td>
+      <td>
+        <p id="a_c">-</p>
+      </td>
+      <td>
+        <p id="a_d">-</p>
+      </td>
+      <td>
+        <p id="a_e">0</p>
+      </td>
+      <td>
+        <p id="a_f">-</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>B</p>
+      </td>
+      <td>
+        <p id="b_a">-</p>
+      </td>
+      <td>
+        <p id="b_b">-</p>
+      </td>
+      <td>
+        <p id="b_c">-</p>
+      </td>
+      <td>
+        <p id="b_d">0</p>
+      </td>
+      <td>
+        <p id="b_e">-</p>
+      </td>
+      <td>
+        <p id="b_f">0</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>C</p>
+      </td>
+      <td>
+        <p id="c_a">-</p>
+      </td>
+      <td>
+        <p id="c_b">-</p>
+      </td>
+      <td>
+        <p id="c_c">-</p>
+      </td>
+      <td>
+        <p id="c_d">0</p>
+      </td>
+      <td>
+        <p id="c_e">-</p>
+      </td>
+      <td>
+        <p id="c_f">-</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>D</p>
+      </td>
+      <td>
+        <p id="d_a">-</p>
+      </td>
+      <td>
+        <p id="d_b">0</p>
+      </td>
+      <td>
+        <p id="d_c">0</p>
+      </td>
+      <td>
+        <p id="d_d">-</p>
+      </td>
+      <td>
+        <p id="d_e">0</p>
+      </td>
+      <td>
+        <p id="d_f">-</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>E</p>
+      </td>
+      <td>
+        <p id="e_a">0</p>
+      </td>
+      <td>
+        <p id="e_b">-</p>
+      </td>
+      <td>
+        <p id="e_c">-</p>
+      </td>
+      <td>
+        <p id="e_d">0</p>
+      </td>
+      <td>
+        <p id="e_e">-</p>
+      </td>
+      <td>
+        <p id="e_f">0</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>F</p>
+      </td>
+      <td>
+        <p id="f_a">-</p>
+      </td>
+      <td>
+        <p id="f_b">0</p>
+      </td>
+      <td>
+        <p id="f_c">-</p>
+      </td>
+      <td>
+        <p id="f_d">-</p>
+      </td>
+      <td>
+        <p id="f_e">0</p>
+      </td>
+      <td>
+        <p id="f_f">0</p>
+      </td>
+    </tr>
+  </table>
+
+  <p id="mow"></p>
+
+  <script>
+    let q = {}
+    q["A"] = {}
+    q["A"]["A"] = 0;
+    q["A"]["B"] = 0;
+    q["A"]["C"] = 0;
+    q["A"]["D"] = 0;
+    q["A"]["E"] = 0;
+    q["A"]["F"] = 0;
+    q["B"] = {}
+    q["B"]["A"] = 0;
+    q["B"]["B"] = 0;
+    q["B"]["C"] = 0;
+    q["B"]["D"] = 0;
+    q["B"]["E"] = 0;
+    q["B"]["F"] = 0;
+    q["C"] = {}
+    q["C"]["A"] = 0;
+    q["C"]["B"] = 0;
+    q["C"]["C"] = 0;
+    q["C"]["D"] = 0;
+    q["C"]["E"] = 0;
+    q["C"]["F"] = 0;
+    q["D"] = {}
+    q["D"]["A"] = 0;
+    q["D"]["B"] = 0;
+    q["D"]["C"] = 0;
+    q["D"]["D"] = 0;
+    q["D"]["E"] = 0;
+    q["D"]["F"] = 0;
+    q["E"] = {}
+    q["E"]["A"] = 0;
+    q["E"]["B"] = 0;
+    q["E"]["C"] = 0;
+    q["E"]["D"] = 0;
+    q["E"]["E"] = 0;
+    q["E"]["F"] = 0;
+    q["F"] = {}
+    q["F"]["A"] = 0;
+    q["F"]["B"] = 0;
+    q["F"]["C"] = 0;
+    q["F"]["D"] = 0;
+    q["F"]["E"] = 0;
+    q["F"]["F"] = 0;
+
+    let r = {}
+    r["A"] = {}
+    r["A"]["A"] = "-";
+    r["A"]["B"] = "-";
+    r["A"]["C"] = "-";
+    r["A"]["D"] = "-";
+    r["A"]["E"] = 0;
+    r["A"]["F"] = "-";
+    r["B"] = {}
+    r["B"]["A"] = "-";
+    r["B"]["B"] = "-";
+    r["B"]["C"] = "-";
+    r["B"]["D"] = 0;
+    r["B"]["E"] = "-";
+    r["B"]["F"] = 100;
+    r["C"] = {}
+    r["C"]["A"] = "-";
+    r["C"]["B"] = "-";
+    r["C"]["C"] = "-";
+    r["C"]["D"] = 0;
+    r["C"]["E"] = "-";
+    r["C"]["F"] = "-";
+    r["D"] = {}
+    r["D"]["A"] = "-";
+    r["D"]["B"] = 0;
+    r["D"]["C"] = 0;
+    r["D"]["D"] = "-";
+    r["D"]["E"] = 0;
+    r["D"]["F"] = "-";
+    r["E"] = {}
+    r["E"]["A"] = 0;
+    r["E"]["B"] = "-";
+    r["E"]["C"] = "-";
+    r["E"]["D"] = 0;
+    r["E"]["E"] = "-";
+    r["E"]["F"] = 100;
+    r["F"] = {}
+    r["F"]["A"] = "-";
+    r["F"]["B"] = 0;
+    r["F"]["C"] = "-";
+    r["F"]["D"] = "-";
+    r["F"]["E"] = 0;
+    r["F"]["F"] = 100;
+
+    let pokoje = ["A", "B", "C", "D", "E", "F"];
+    let jestem = "";
+    let bede = "";
+    let delta = 0.8;
+    let drzwi = [];
+    let future_max = 0;
+    let wartosc = 0;
+
+    function losuj(tabela) {
+      let wartosc = tabela[Math.floor(Math.random() * tabela.length)];
+      return wartosc
+    }
+
+    function policz_drzwi(tu) {
+      for (let i = 0; i < pokoje.length; i++) {
+        if (eval("r." + tu + "." + pokoje[i]) != "-") {
+          drzwi.push(pokoje[i]);
+        }
+      }
+      return
+    }
+
+    function future() {
+      future_max = 0;
+      for (let i = 0; i < pokoje.length; i++) {
+        if (future_max < eval("q." + bede + "." + pokoje[i])) {
+          future_max = eval("q." + bede + "." + pokoje[i])
+        }
+      }
+    }
+
+    function nauka() {
+
+      jestem = "";
+      bede = "";
+      drzwi = [];
+      numer_drzwi = 0;
+
+      jestem = losuj(pokoje);
+      policz_drzwi(jestem);
+      bede = losuj(drzwi);
+      future()
+
+      switch (jestem) {
+        case "A":
+          switch (bede) {
+            case "A":
+              q.A.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.A.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.A.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.A.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.A.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.A.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+          break;
+        case "B":
+          switch (bede) {
+            case "A":
+              q.B.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.B.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.B.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.B.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.B.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.B.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+          break;
+        case "C":
+          switch (bede) {
+            case "A":
+              q.C.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.C.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.C.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.C.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.C.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.C.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+          break;
+        case "D":
+          switch (bede) {
+            case "A":
+              q.D.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.D.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.D.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.D.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.D.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.D.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+          break;
+        case "E":
+          switch (bede) {
+            case "A":
+              q.E.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.E.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.E.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.E.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.E.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.E.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+          break;
+        case "F":
+          switch (bede) {
+            case "A":
+              q.F.A = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "B":
+              q.F.B = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "C":
+              q.F.C = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "D":
+              q.F.D = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "E":
+              q.F.E = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+            case "F":
+              q.F.F = eval("r." + jestem + "." + bede) + delta * future_max;
+              break;
+          }
+      }
+
+      document.getElementById(jestem.toLowerCase() + "_" + bede.toLowerCase()).innerHTML = eval("r." + jestem + "." + bede) + delta * future_max;
+
+      if (q.B.F == q.E.F && q.E.F == q.F.F && q.F.F == 500) {
+        if (q.A.E == q.D.B && q.D.B == q.D.E && q.D.E == q.F.B && q.F.B == q.F.E && q.F.E == 400) {
+          if (q.B.D == q.C.D && q.C.D == q.E.A && q.E.A == q.E.D && q.E.D == 320) {
+            if (q.D.C == 256) {
+              console.log("koniec");
+              return
+            }
+          }
+        }
+      }
+
+      setTimeout(nauka, 10);
+    }
+
+    function szczur(miejsce) {
+      document.getElementById("mow").innerHTML = ""
+      document.getElementById("mow").innerHTML += miejsce + " -> ";
+      if (String(miejsce.toUpperCase()) == "F") {
+        document.getElementById("mow").innerHTML += "Koniec";
+        return
+      }
+      policz_drzwi(String(miejsce.toUpperCase()));
+      for (let i = 0; i < pokoje.length; i++) {
+        if (eval("q." + String(miejsce.toUpperCase()) + "." + pokoje[i]) > wartosc) {
+          console.log(pokoje[i])
+          bede = pokoje[i];
+          wartosc = eval("q." + String(miejsce.toUpperCase()) + "." + pokoje[i]);
+        }
+      }
+      szczur(bede);
+    }
+
+    nauka();
+  </script>
+</body>
+
+</html>
